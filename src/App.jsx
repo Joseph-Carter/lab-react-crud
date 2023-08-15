@@ -9,6 +9,10 @@ import Show from "./components/shows/Show";
 import ShowsEditForm from "./components/shows/ShowsEditForm";
 import ShowsIndex from "./components/shows/ShowsIndex";
 import ShowsNewForm from "./components/shows/ShowsNewForm";
+import Movie from "./components/movies/Movie"
+import MovieEditFrom from "./components/movies/MovieEditForm"
+import MovieIndex from "./components/movies/MoviesIndex"
+import MovieNewForm from "./components/movies/MovieNewForm"
 
 function App() {
   return (
