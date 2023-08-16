@@ -30,3 +30,22 @@ export function updateShow(id, show) {
 export function getAllMovies() {
   return;
 }
+
+export function createMovie(movie) {
+  return;
+}
+
+// Delete
+export function destroyMovie(id) {
+  return;
+}
+
+// Movie/Get one
+export function getOneMovie(id) {
+  return;
+}
+
+// Update
+export function updateMovie(id, movie) {
+  return;
+}
