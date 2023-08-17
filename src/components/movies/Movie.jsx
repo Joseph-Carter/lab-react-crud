@@ -16,7 +16,7 @@ const Movie = () => {
         getOneMovie(id)
         .then((movieData) => {
             setMovie(movieData)
-            Object.keys(movieData).length ? setError(true) : setError(false)
+            Object.keys(movieData).length === 0 ? setError(true) : setError(false)
         })
         .catch((err) => {
             console.error(err)
@@ -27,7 +27,7 @@ const Movie = () => {
     function handleDelete(id) {
         destroyMovie(id)
         .then(() => {
-            alert('Show has been removed, rerouting to the list of movies.')
+            alert('Movie has been removed, rerouting to the list of movies.')
             navigate("/movies")
         })
     }

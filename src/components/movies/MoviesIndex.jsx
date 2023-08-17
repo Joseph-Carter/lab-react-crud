@@ -7,20 +7,32 @@ import { getAllMovies } from "../../api/fetch";
 export default function MoviesIndex() {
 
   const [error, setError] = useState(false)
-    const [movie, setMovie] = useState({})
+  const [movies, setMovies] = useState([])
+  const [searchTitle, setSearchTitle] = useState('')
+  const [filteredMovies, setFilteredMovies] = useState([])
 
     useEffect(() => {
-      getAllMovies(id)
-      .then((movieData) => {
-        setMovie(movieData)
+      getAllMovies()
+      .then((moviesJson) => {
+        setMovies(moviesJson)
+        setFilteredMovies(moviesJson)
         setError(false)
       })
       .catch((err) => {
-        console.error(err)
         setError(true)
+        console.error(err)
       })
     }, [])
 
+    function handleTextChange(e) {
+      setSearchTitle(e.target.value)
+      filterMovies(e.target.value)
+    }
+
+    function filterMovies(searchValue) {
+      const filtered = movies.filter((movie) => movie.title.toLowerCase().includes(searchValue.toLowerCase()))
+      setFilteredMovies(filtered);
+    }
 
   return (
     <div>
@@ -38,13 +50,13 @@ export default function MoviesIndex() {
             Search Movies:
             <input
               type="text"
-              // value={searchTitle}
+              value={searchTitle}
               id="searchTitle"
-              // onChange={handleTextChange}
+              onChange={handleTextChange}
             />
           </label>
           <section className="movies-index">
-            {movies.map((movie) => {
+            {filteredMovies.map((movie) => {
               return <MovieListing movie={movie} key={movie.id} />
             })}
           </section>
